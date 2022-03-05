@@ -82,15 +82,15 @@ body {
   left: 50%;
   transform: translateX(-50%) translateY(-57%);
 }
-.card .mobile-illustration #mobile-shadow {
-  position: absolute;
-  transform: translateY(100%) translateX(-100%);
-  z-index: -1;
-}
 @media (min-width: 64em) {
   .card .mobile-illustration {
     display: none;
   }
+}
+.card #mobile-shadow {
+  position: absolute;
+  transform: translateY(100%) translateX(-100%);
+  z-index: -1;
 }
 .card .desktop-illustration img {
   transform: translateX(-15%);
@@ -98,7 +98,12 @@ body {
   z-index: 2;
   top: 15%;
 }
-.card .desktop-illustration #box {
+@media (max-width: 63.9375em) {
+  .card .desktop-illustration {
+    display: none;
+  }
+}
+.card #box {
   transform: scale(0.4) translateY(-5%);
   position: absolute;
   left: -50%;
@@ -107,45 +112,40 @@ body {
   animation-iteration-count: infinite;
   animation-direction: alternate-reverse;
 }
-.card .desktop-illustration #desktop-shadow {
+.card #desktop-shadow {
   position: absolute;
   left: 0;
   top: 5%;
   z-index: 1;
 }
-@media (max-width: 63.9375em) {
-  .card .desktop-illustration {
-    display: none;
-  }
-}
 .card__text {
   text-align: center;
   margin-top: min(25%, 9.375rem);
-}
-.card__text h1 {
+  font-size: 0.875rem;
+  font-weight: 400;
   color: var(--veryDarkDesaturatedBlue);
 }
-.card__text h2,
-.card__text p {
+.card__text h2 {
   font-size: 0.875rem;
-  color: var(---veryDarkDesaturatedBlue);
   font-weight: 400;
+  display: flex;
+  justify-content: space-between;
+  transition: all 100ms ease-in-out;
+}
+.card__text h2:hover {
+  color: var(--softRed);
+  cursor: pointer;
 }
 .card__text p {
+  color: var(--darkGrayishBlue);
   border-bottom: 1px solid var(--lightGrayishBlue);
   max-height: 0;
   overflow: hidden;
   transition: all 300ms ease-in-out;
-  color: var(--darkGrayishBlue);
 }
 @media (max-width: 63.9375em) {
   .card__text p {
     text-align: left;
-  }
-}
-@media (max-width: 63.9375em) {
-  .card__text .faq__item {
-    padding: 0 25px;
   }
 }
 .card__text .faq__item.active p {
@@ -158,14 +158,10 @@ body {
 .card__text .faq__item.active span {
   transform: rotate(0.5turn);
 }
-.card__text h2 {
-  display: flex;
-  justify-content: space-between;
-  transition: font-weight 500 ease-in-out;
-}
-.card__text h2:hover {
-  color: var(--softRed);
-  cursor: pointer;
+@media (max-width: 63.9375em) {
+  .card__text .faq__item {
+    padding: 0 25px;
+  }
 }
 @media (min-width: 64em) {
   .card__text {

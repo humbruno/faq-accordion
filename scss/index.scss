@@ -39,15 +39,15 @@ body {
     left: 50%;
     transform: translateX(-50%) translateY(-57%);
 
-    #mobile-shadow {
-      position: absolute;
-      transform: translateY(100%) translateX(-100%);
-      z-index: -1;
-    }
-
     @include breakpoint(large) {
       display: none;
     }
+  }
+
+  #mobile-shadow {
+    position: absolute;
+    transform: translateY(100%) translateX(-100%);
+    z-index: -1;
   }
 
   .desktop-illustration {
@@ -58,49 +58,54 @@ body {
       top: 15%;
     }
 
-    #box {
-      transform: scale(0.4) translateY(-5%);
-      position: absolute;
-      left: -50%;
-      animation-name: hover;
-      animation-duration: 1s;
-      animation-iteration-count: infinite;
-      animation-direction: alternate-reverse;
-    }
-
-    #desktop-shadow {
-      position: absolute;
-      left: 0;
-      top: 5%;
-      z-index: 1;
-    }
-
     @include breakpoint-down(medium) {
       display: none;
     }
   }
 
+  #box {
+    transform: scale(0.4) translateY(-5%);
+    position: absolute;
+    left: -50%;
+    animation-name: hover;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+  }
+
+  #desktop-shadow {
+    position: absolute;
+    left: 0;
+    top: 5%;
+    z-index: 1;
+  }
+
   &__text {
     text-align: center;
     margin-top: min(25%, rem(150));
+    font-size: rem(14);
+    font-weight: 400;
+    color: var(--veryDarkDesaturatedBlue);
 
-    h1 {
-      color: var(--veryDarkDesaturatedBlue);
-    }
-
-    h2,
-    p {
+    h2 {
       font-size: rem(14);
-      color: var(---veryDarkDesaturatedBlue);
       font-weight: 400;
+      display: flex;
+      justify-content: space-between;
+      transition: all 100ms ease-in-out;
+
+      &:hover {
+        color: var(--softRed);
+        cursor: pointer;
+      }
     }
 
     p {
+      color: var(--darkGrayishBlue);
       border-bottom: 1px solid var(--lightGrayishBlue);
       max-height: 0;
       overflow: hidden;
       transition: all 300ms ease-in-out;
-      color: var(--darkGrayishBlue);
 
       @include breakpoint-down(medium) {
         text-align: left;
@@ -108,33 +113,22 @@ body {
     }
 
     .faq__item {
+      &.active p {
+        max-height: 500px;
+        padding-bottom: 15px;
+      }
+
+      &.active h2 {
+        font-weight: 700;
+      }
+
+      &.active span {
+        transform: rotate(0.5turn);
+      }
+
       @include breakpoint-down(medium) {
         padding: 0 25px;
       }
-    }
-
-    .faq__item.active p {
-      max-height: 500px;
-      padding-bottom: 15px;
-    }
-
-    .faq__item.active h2 {
-      font-weight: 700;
-    }
-
-    .faq__item.active span {
-      transform: rotate(0.5turn);
-    }
-
-    h2 {
-      display: flex;
-      justify-content: space-between;
-      transition: font-weight 500 ease-in-out;
-    }
-
-    h2:hover {
-      color: var(--softRed);
-      cursor: pointer;
     }
 
     @include breakpoint(large) {
