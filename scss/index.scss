@@ -1,5 +1,158 @@
 @use "utils" as *;
 
 body {
-  background-color: var(--lightGrayishBlue);
+  background: linear-gradient(var(--gradientViolet), var(--gradientBlue));
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  background-color: white;
+  border-radius: rem(20);
+  max-width: rem(1100);
+  margin: rem(45);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
+  @include breakpoint(large) {
+    display: flex;
+    margin: 6rem auto;
+  }
+
+  &__image {
+    position: relative;
+
+    @include breakpoint(large) {
+      flex: 1;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .mobile-illustration {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(-57%);
+
+    #mobile-shadow {
+      position: absolute;
+      transform: translateY(100%) translateX(-100%);
+      z-index: -1;
+    }
+
+    @include breakpoint(large) {
+      display: none;
+    }
+  }
+
+  .desktop-illustration {
+    img {
+      transform: translateX(-15%);
+      position: absolute;
+      z-index: 2;
+      top: 15%;
+    }
+
+    #box {
+      transform: scale(0.4) translateY(-5%);
+      position: absolute;
+      left: -50%;
+      animation-name: hover;
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate-reverse;
+    }
+
+    #desktop-shadow {
+      position: absolute;
+      left: 0;
+      top: 5%;
+      z-index: 1;
+    }
+
+    @include breakpoint-down(medium) {
+      display: none;
+    }
+  }
+
+  &__text {
+    text-align: center;
+    margin-top: min(25%, rem(150));
+
+    h1 {
+      color: var(--veryDarkDesaturatedBlue);
+    }
+
+    h2,
+    p {
+      font-size: rem(14);
+      color: var(---veryDarkDesaturatedBlue);
+      font-weight: 400;
+    }
+
+    p {
+      border-bottom: 1px solid var(--lightGrayishBlue);
+      max-height: 0;
+      overflow: hidden;
+      transition: all 300ms ease-in-out;
+      color: var(--darkGrayishBlue);
+
+      @include breakpoint-down(medium) {
+        text-align: left;
+      }
+    }
+
+    .faq__item {
+      @include breakpoint-down(medium) {
+        padding: 0 25px;
+      }
+    }
+
+    .faq__item.active p {
+      max-height: 500px;
+      padding-bottom: 15px;
+    }
+
+    .faq__item.active h2 {
+      font-weight: 700;
+    }
+
+    .faq__item.active span {
+      transform: rotate(0.5turn);
+    }
+
+    h2 {
+      display: flex;
+      justify-content: space-between;
+      transition: font-weight 500 ease-in-out;
+    }
+
+    h2:hover {
+      color: var(--softRed);
+      cursor: pointer;
+    }
+
+    @include breakpoint(large) {
+      flex: 1;
+      margin-top: 0;
+      text-align: left;
+      padding: 50px 60px 50px 10px;
+    }
+
+    @include breakpoint-down(medium) {
+      padding-bottom: 30px;
+    }
+  }
+}
+
+@keyframes hover {
+  // animation for desktop box hover effect
+  to {
+    transform: scale(0.4) translateY(-15%);
+  }
 }
