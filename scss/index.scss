@@ -100,18 +100,6 @@ body {
       }
     }
 
-    p {
-      color: var(--darkGrayishBlue);
-      border-bottom: 1px solid var(--lightGrayishBlue);
-      max-height: 0;
-      overflow: hidden;
-      transition: all 300ms ease-in-out;
-
-      @include breakpoint-down(medium) {
-        text-align: left;
-      }
-    }
-
     .faq__item {
       &.active p {
         max-height: 500px;
@@ -124,6 +112,18 @@ body {
 
       &.active span {
         transform: rotate(0.5turn);
+      }
+
+      p {
+        color: var(--darkGrayishBlue);
+        border-bottom: 1px solid var(--lightGrayishBlue);
+        max-height: 0;
+        overflow: hidden;
+        transition: all 300ms ease-in-out;
+
+        @include breakpoint-down(medium) {
+          text-align: left;
+        }
       }
 
       @include breakpoint-down(medium) {
