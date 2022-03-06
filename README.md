@@ -43,24 +43,16 @@ Users should be able to:
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+By far, the biggest challenge with this one was setting up the images differentiation between mobile and desktop.
 
-To see how you can add code snippets, see below:
+I tried several different approaches before landing on a `div`for each one and giving it a `display: none` property on the opposing media query.
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
+This helped me realize that there isn't always a "correct" way of doing things and that there are multiple ways to tackle a problem.
 
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
+The accordion expansion animation is something I haven't been able to improve, as the animation has a "snap" feeling to it.
 
-```js
-const proudOfThisFunc = () => {
-  console.log("🎉");
-};
-```
+The accordion initially has a `max-height: 0` property which changes to `max-height: 500px` when active. This is theoreticaly an "unnatainable" max height that an FAQ item will never have, and it´s so the content adjusts itself to the amount of letters in each item.
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+The animation was a lot smoother when I set a fixed height such as `height: 50px` when expanding, but this isn't a scalable solution as not every item has the same number of letters therefore needs more/less space.
+
+I am overall satisfied with the final results but do realize there is much to improve on when it comes to preparing my code structure ahead of starting to write it.
